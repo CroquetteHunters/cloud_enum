@@ -20,4 +20,4 @@ REGIONS = ['us-central1', 'us-east1', 'us-east4', 'us-west2', 'us-west3',
 
 
 # And here I am limiting the search by overwriting this variable:
-REGIONS = ['eu-west-1', ]
+REGIONS = ['europe-west-1', ]
