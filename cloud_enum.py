@@ -207,18 +207,33 @@ def build_names(base_list, mutations):
             # Clean mutation
             mutation = clean_text(mutation)
 
-            # Then, do appends
+            # Appends
             append_name(f"{base}{mutation}", names)
             append_name(f"{base}.{mutation}", names)
             append_name(f"{base}-{mutation}", names)
 
-            # Then, do prepends
+            # Prepends
             append_name(f"{mutation}{base}", names)
             append_name(f"{mutation}.{base}", names)
             append_name(f"{mutation}-{base}", names)
 
-    print(f"[+] Mutated results: {len(names)} items")
+        for prepend_mutation in mutations:
+            # Clean prepend mutation
+            prepend_mutation = clean_text(prepend_mutation)
 
+            for append_mutation in mutations:
+                # Clean append mutation
+                append_mutation = clean_text(append_mutation)
+
+                # Surround base with prepend and append mutations
+                append_name(f"{prepend_mutation}{base}{append_mutation}", names)
+                append_name(f"{prepend_mutation}.{base}.{append_mutation}", names)
+                append_name(f"{prepend_mutation}-{base}-{append_mutation}", names)
+                append_name(f"{prepend_mutation}{base}.{append_mutation}", names)
+                append_name(f"{prepend_mutation}.{base}{append_mutation}", names)
+
+    print(f"[+] Mutated results: {len(names)} items")
+    print(names)
     return names
 
 
